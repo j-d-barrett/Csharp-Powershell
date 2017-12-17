@@ -1,19 +1,19 @@
-// Clear print queue (no alias' used)
-//
-//
-// Stop spooler service, then waits until this is complete
+# Clear print queue (no alias' used)
+#
+#
+# Stop spooler service, then waits until this is complete
 
-Stop-Service Spooler | Wait-Job
+Stop-Service Spooler -Force -Confirm | Wait-Job
 
-// Delete all contents of C:\Windows\System32\spool\PRINTERS
-// Deletes only print spooler items
+# Delete all contents of C:\Windows\System32\spool\PRINTERS
+# Deletes only print spooler items
 
 Remove-Item C:\Windows\System32\spool\PRINTERS\* -include .spl,.shd
 
-// Restart spooler service, then waits until this is complete
+# Restart spooler service, then waits until this is complete
 
 Start-Service Spooler | Wait-Job
 
 
-// Send an email to myself that this job has been done/complete?
-// Send-MailMessage
+# Send an email to myself that this job has been done/complete?
+# Send-MailMessage
